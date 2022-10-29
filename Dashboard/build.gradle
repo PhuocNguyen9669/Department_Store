@@ -1,0 +1,52 @@
+plugins {
+    id "java"
+    id "org.springframework.boot" version "2.7.5"
+    id "io.spring.dependency-management" version "1.1.0"
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+ext {
+    springfox_version = "3.0.0"
+    jsonwebtoken_version = "0.11.5"
+    darrachequesne_version = "5.2.0"
+}
+
+dependencies {
+    compileOnly "org.projectlombok:lombok"
+    runtimeOnly "mysql:mysql-connector-java"
+//    implementation "org.thymeleaf.extras:thymeleaf-extras-springsecurity5"
+//    implementation "io.springfox:springfox-boot-starter:${springfox_version}"
+    implementation "com.github.darrachequesne:spring-data-jpa-datatables:${darrachequesne_version}"
+
+//    implementation "io.jsonwebtoken:jjwt-api:${jsonwebtoken_version}"
+//    runtimeOnly "io.jsonwebtoken:jjwt-impl:${jsonwebtoken_version}"
+//    runtimeOnly "io.jsonwebtoken:jjwt-jackson:${jsonwebtoken_version}"
+
+    developmentOnly "org.springframework.boot:spring-boot-devtools"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+//    implementation "org.springframework.boot:spring-boot-starter-security"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
+    implementation "org.springframework.boot:spring-boot-starter-validation"
+
+    annotationProcessor "org.projectlombok:lombok"
+}
+
+group = "org.phnpteam"
+version = "1.0.0.0"
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
